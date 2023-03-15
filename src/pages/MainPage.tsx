@@ -1,8 +1,8 @@
 import { Box, Container, Grid } from "@mui/material";
 import React from "react";
-import { ListItems } from "./ListItems";
-import { SearchInput } from "./SearchInput";
-import { Title } from "./Title";
+import { ListItems } from "../components/ListItems";
+import { SearchInput } from "../components/SearchInput";
+import { Title } from "../components/Title";
 
 export const MainPage: React.FC = () => {
   return (
