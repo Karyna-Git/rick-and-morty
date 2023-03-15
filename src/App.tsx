@@ -1,7 +1,12 @@
-import React from "react";
+import { Box } from "@mui/material";
+import { MainPage } from "./components/MainPage";
 
 function App() {
-  return <div></div>;
+  return (
+    <Box sx={{ mb: 23.5 }}>
+      <MainPage />
+    </Box>
+  );
 }
 
 export default App;
