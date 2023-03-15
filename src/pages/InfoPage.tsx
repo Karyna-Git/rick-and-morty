@@ -47,6 +47,7 @@ export const InfoPage: React.FC = () => {
       >
         <Avatar
           src="logo.png"
+          alt="item-photo"
           sx={(theme) => ({
             [theme.breakpoints.up("md")]: {
               width: "300px",

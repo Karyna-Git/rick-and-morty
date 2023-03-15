@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import { MainPage } from "./components/MainPage";
+import { MainPage } from "./pages/MainPage";
 
 function App() {
   return (
-    <Box sx={{ mb: 23.5 }}>
+    <Box>
       <MainPage />
     </Box>
   );

@@ -43,8 +43,8 @@ export const ItemCard: React.FC = () => {
             Rick
           </Typography>
           <Typography
-            variant="body2"
             sx={{
+              fontSize: "14px",
               fontWeight: 400,
               lineHeight: "21px",
               letterSpacing: "0.25px",
