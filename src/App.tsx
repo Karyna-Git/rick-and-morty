@@ -1,11 +1,13 @@
-import { Box } from "@mui/material";
+import { Route, Routes } from "react-router-dom";
+import { InfoPage } from "./pages/InfoPage";
 import { MainPage } from "./pages/MainPage";
 
 function App() {
   return (
-    <Box>
-      <MainPage />
-    </Box>
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/info/:id" element={<InfoPage />} />
+    </Routes>
   );
 }
 
