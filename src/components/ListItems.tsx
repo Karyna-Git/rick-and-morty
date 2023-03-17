@@ -1,13 +1,18 @@
 import { Grid } from "@mui/material";
 import React from "react";
+import { ICharacter } from "../types";
 import { ItemCard } from "./ItemCard";
 
-export const ListItems: React.FC = () => {
+interface ListItemsProps {
+  items?: ICharacter[];
+}
+
+export const ListItems: React.FC<ListItemsProps> = ({ items = [] }) => {
   return (
     <>
-      {[1, 2, 3, 4, 5].map((item, index) => (
-        <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-          <ItemCard key={index} />
+      {items.map((item) => (
+        <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
+          <ItemCard key={item.id} item={item} />
         </Grid>
       ))}
     </>

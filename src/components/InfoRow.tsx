@@ -1,7 +1,13 @@
 import { Box, Divider, Typography } from "@mui/material";
 import React from "react";
+import { capitalizeFirstLetter } from "../helpers";
 
-export const InfoRow: React.FC = () => {
+interface InfoRowProps {
+  rowKey: string;
+  rowValue: string;
+}
+
+export const InfoRow: React.FC<InfoRowProps> = ({ rowKey, rowValue }) => {
   return (
     <Box sx={{ pt: 1, px: 2, textAlign: "start" }}>
       <Typography
@@ -11,7 +17,7 @@ export const InfoRow: React.FC = () => {
           color: "#081F32",
         }}
       >
-        Gender
+        {capitalizeFirstLetter(rowKey)}
       </Typography>
       <Typography
         sx={{
@@ -22,7 +28,7 @@ export const InfoRow: React.FC = () => {
           color: "#6E798C",
         }}
       >
-        Human
+        {rowValue}
       </Typography>
       <Divider sx={{ mt: 1.5, background: "rgba(33, 33, 33, 0.08)" }} />
     </Box>

@@ -1,8 +1,21 @@
 import { Box } from "@mui/material";
 import React from "react";
+import { ICharacter } from "../types";
 import { InfoRow } from "./InfoRow";
 
-export const InfoTable: React.FC = () => {
+interface InfoTableProps {
+  item?: ICharacter;
+}
+
+export const InfoTable: React.FC<InfoTableProps> = ({ item }) => {
+  if (!item) {
+    return null;
+  }
+
+  const { id, status, species, type, gender, origin } = item;
+  const rows = { status, species, type, gender, origin: origin.name };
+  const entries = Object.entries(rows);
+
   return (
     <Box
       sx={(theme) => ({
@@ -16,9 +29,10 @@ export const InfoTable: React.FC = () => {
         maxWidth: "400px",
       })}
     >
-      {[1, 2, 3, 4, 5].map((item, index) => (
-        <InfoRow key={index} />
-      ))}
+      {entries.map(
+        ([key, value]) =>
+          value && <InfoRow key={id} rowKey={key} rowValue={value} />
+      )}
     </Box>
   );
 };

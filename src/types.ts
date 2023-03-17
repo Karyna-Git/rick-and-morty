@@ -29,7 +29,3 @@ export interface ServerResponse<T> {
   info: IInfo;
   results: T[];
 }
-
-export interface ServerResponseSingleData<T> {
-  data: T[];
-}

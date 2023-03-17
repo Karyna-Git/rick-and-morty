@@ -2,9 +2,15 @@ import { ArrowBack } from "@mui/icons-material";
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
+import { useParams } from "react-router-dom";
 import { InfoTable } from "../components/InfoTable";
+import { StyledLink } from "../components/StyledLink";
+import { useGetCharacterByIdQuery } from "../store/api";
 
 export const InfoPage: React.FC = () => {
+  const { id } = useParams();
+  const { data } = useGetCharacterByIdQuery(Number(id));
+
   return (
     <Box
       sx={(theme) => ({
@@ -17,22 +23,24 @@ export const InfoPage: React.FC = () => {
         p: 3,
       })}
     >
-      <Button
-        startIcon={<ArrowBack sx={{ width: "24px", height: "24px" }} />}
-        sx={{
-          pt: 0.25,
-          pb: 0.15,
-          pl: 0.5,
-          pr: 0,
-          height: "24px",
-          fontWeight: 700,
-          fontSize: "18px",
-          lineHeight: "21px",
-          color: "black",
-        }}
-      >
-        Go Back
-      </Button>
+      <StyledLink to="/">
+        <Button
+          startIcon={<ArrowBack sx={{ width: "24px", height: "24px" }} />}
+          sx={{
+            pt: 0.25,
+            pb: 0.15,
+            pl: 0.5,
+            pr: 0,
+            height: "24px",
+            fontWeight: 700,
+            fontSize: "18px",
+            lineHeight: "21px",
+            color: "black",
+          }}
+        >
+          Go Back
+        </Button>
+      </StyledLink>
       <Container
         sx={(theme) => ({
           [theme.breakpoints.up("md")]: {
@@ -46,7 +54,7 @@ export const InfoPage: React.FC = () => {
         })}
       >
         <Avatar
-          src="logo.png"
+          src={data?.image}
           alt="item-photo"
           sx={(theme) => ({
             [theme.breakpoints.up("md")]: {
@@ -76,7 +84,7 @@ export const InfoPage: React.FC = () => {
             color: "#081F32",
           })}
         >
-          Rick Sanchez
+          {data?.name}
         </Typography>
         <Typography
           sx={(theme) => ({
@@ -95,7 +103,7 @@ export const InfoPage: React.FC = () => {
         >
           Informations
         </Typography>
-        <InfoTable />
+        <InfoTable item={data} />
       </Container>
     </Box>
   );
