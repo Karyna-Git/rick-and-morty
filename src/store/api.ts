@@ -8,7 +8,7 @@ export const charactersApi = createApi({
   }),
   endpoints: (build) => ({
     searchCharacters: build.query<ICharacter[], string>({
-      query: (search: string) => ({ url: `/?name=${search}` }),
+      query: (search?: string) => ({ url: search ? `/?name=${search}` : "/" }),
       transformResponse: (response: ServerResponse<ICharacter>) =>
         response.results,
     }),
