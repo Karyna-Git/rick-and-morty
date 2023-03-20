@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import { ICharacter } from "../types";
 import { InfoRow } from "./InfoRow";
 
@@ -12,7 +13,7 @@ export const InfoTable: React.FC<InfoTableProps> = ({ item }) => {
     return null;
   }
 
-  const { id, status, species, type, gender, origin } = item;
+  const { status, species, type, gender, origin } = item;
   const rows = { status, species, type, gender, origin: origin.name };
   const entries = Object.entries(rows);
 
@@ -31,7 +32,7 @@ export const InfoTable: React.FC<InfoTableProps> = ({ item }) => {
     >
       {entries.map(
         ([key, value]) =>
-          value && <InfoRow key={id} rowKey={key} rowValue={value} />
+          value && <InfoRow key={uuidv4()} rowKey={key} rowValue={value} />
       )}
     </Box>
   );
