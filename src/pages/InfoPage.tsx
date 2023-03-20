@@ -1,6 +1,5 @@
 import { ArrowBack } from "@mui/icons-material";
-import { Avatar, Box, Button, Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import { Avatar, Box, Button, Container, Typography } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { InfoTable } from "../components/InfoTable";

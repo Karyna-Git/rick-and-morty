@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import queryString from "query-string";
 
 interface CharactersState {
   filter: string;
   page: number;
 }
 
+const { name = "", page = 1 } = queryString.parse(window.location.search);
+
 const initialState: CharactersState = {
-  filter: "",
-  page: 1,
+  filter: String(name),
+  page: Number(page) || 1,
 };
 
 export const charactersSlice = createSlice({
