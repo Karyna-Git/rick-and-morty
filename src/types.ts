@@ -29,3 +29,23 @@ export interface ServerResponse<T> {
   info: IInfo;
   results: T[];
 }
+
+export interface IUserProfile {
+  id: string;
+  name: string;
+  email: string;
+  locale: string;
+  picture: string;
+  family_name: string;
+  given_name: string;
+  verified_email: boolean;
+}
+
+export interface IUserData {
+  access_token: string;
+  authuser: string;
+  expires_in: number;
+  prompt: string;
+  scope: string;
+  token_type: string;
+}
