@@ -3,6 +3,8 @@ import { SignIn } from "./pages/LoginPage";
 import { InfoPage } from "./pages/InfoPage";
 import { MainPage } from "./pages/MainPage";
 import { useAppSelector } from "./store/hooks";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GOOGLE_PROVIDER_ID } from "./constants";
 
 function App() {
   const profile = useAppSelector((state) => state.user.profile);
@@ -15,7 +17,9 @@ function App() {
           <Route path="/info/:id" element={<InfoPage />} />
         </Routes>
       ) : (
-        <SignIn />
+        <GoogleOAuthProvider clientId={GOOGLE_PROVIDER_ID}>
+          <SignIn />
+        </GoogleOAuthProvider>
       )}
     </>
   );
