@@ -8,12 +8,13 @@ import { GOOGLE_PROVIDER_ID } from "./constants";
 
 function App() {
   const profile = useAppSelector((state) => state.user.profile);
+  console.log(profile)
 
   return (
     <>
       {profile ? (
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/rick-and-morty" element={<MainPage />} />
           <Route path="/info/:id" element={<InfoPage />} />
         </Routes>
       ) : (
