@@ -18,7 +18,7 @@ export const HideAppBar: React.FC<HideAppBarProps> = (props) => {
     <>
       <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar sx={{ bgcolor: "#035d6b", boxShadow: "0 0 7px 2px #00afc8" }}>
+        <AppBar sx={{ bgcolor: "#0094A9", boxShadow: "0 0 7px 2px #00afc8" }}>
           <Toolbar>
             <img
               src="logo.png"
@@ -38,14 +38,13 @@ export const HideAppBar: React.FC<HideAppBarProps> = (props) => {
                 ml: 2.5,
               })}
             >
-              Rick and Morty
+              Rick & Morty
             </Typography>
             <UserInfo />
           </Toolbar>
         </AppBar>
       </HideOnScroll>
       {props.children}
-      <Toolbar />
     </>
   );
 };

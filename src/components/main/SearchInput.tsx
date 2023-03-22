@@ -1,10 +1,16 @@
 import { Search } from "@mui/icons-material";
 import { TextField } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 
-export const SearchInput: React.FC = () => {
-  const [value, setValue] = useState("");
+interface SearchInputProps {
+  value: string;
+  changeValue: (value: string) => void;
+}
 
+export const SearchInput: React.FC<SearchInputProps> = ({
+  value,
+  changeValue,
+}) => {
   return (
     <TextField
       fullWidth
@@ -13,7 +19,7 @@ export const SearchInput: React.FC = () => {
       }}
       placeholder="Filter by name..."
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e) => changeValue(e.target.value)}
     />
   );
 };

@@ -1,7 +1,7 @@
 import { Avatar, Box, Divider, Menu } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import { LogOutButton } from "./LogOutButton";
+import { LogoutButton } from "./LogOutButton";
 
 interface UserInfoMenuProps {
   name: string;
@@ -9,7 +9,7 @@ interface UserInfoMenuProps {
   picture: string;
   anchorElement: HTMLElement | null;
   closeMenu: () => void;
-  logOut: () => void;
+  onLogout: () => void;
 }
 
 export const UserInfoMenu: React.FC<UserInfoMenuProps> = ({
@@ -18,7 +18,7 @@ export const UserInfoMenu: React.FC<UserInfoMenuProps> = ({
   picture,
   anchorElement,
   closeMenu,
-  logOut,
+  onLogout,
 }) => {
   return (
     <Menu
@@ -61,7 +61,7 @@ export const UserInfoMenu: React.FC<UserInfoMenuProps> = ({
         </Box>
         <Divider />
         <Box sx={{ textAlign: "center", mt: 2 }}>
-          <LogOutButton logOut={logOut} />
+          <LogoutButton onLogout={onLogout} />
         </Box>
       </Box>
     </Menu>

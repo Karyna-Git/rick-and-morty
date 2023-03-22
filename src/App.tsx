@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { SignIn } from "./components/login/SignIn";
+import { SignIn } from "./pages/LoginPage";
 import { InfoPage } from "./pages/InfoPage";
 import { MainPage } from "./pages/MainPage";
 import { useAppSelector } from "./store/hooks";

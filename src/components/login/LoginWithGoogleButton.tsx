@@ -3,18 +3,18 @@ import { Button } from "@mui/material";
 import React from "react";
 
 interface LoginWithGoogleButtonProps {
-  login: () => void;
+  onLogin: () => void;
 }
 
 export const LoginWithGoogleButton: React.FC<LoginWithGoogleButtonProps> = ({
-  login,
+  onLogin,
 }) => {
   return (
     <Button
       variant="outlined"
       size="large"
       startIcon={<Google />}
-      onClick={() => login()}
+      onClick={onLogin}
     >
       Continue with Google
     </Button>

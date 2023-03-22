@@ -21,8 +21,8 @@ export interface ICharacter {
 interface IInfo {
   count: number;
   pages: number;
-  next: string | null;
-  prev: string | null;
+  next: string;
+  prev: string;
 }
 
 export interface ServerResponse<T> {

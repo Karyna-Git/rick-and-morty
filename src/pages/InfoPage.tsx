@@ -1,107 +1,38 @@
-import { ArrowBack } from "@mui/icons-material";
-import { Avatar, Box, Button, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React from "react";
-import { useParams } from "react-router-dom";
-import { InfoTable } from "../components/InfoTable";
-import { StyledLink } from "../components/StyledLink";
+import { useNavigate, useParams } from "react-router-dom";
+import { BackButton } from "../components/info/BackButton";
+import { InfoAvatar } from "../components/info/InfoAvatar";
+import { InfoName } from "../components/info/InfoName";
+import { InfoTable } from "../components/info/InfoTable";
+import { InfoTitle } from "../components/info/InfoTitle";
 import { useGetCharacterByIdQuery } from "../store/api";
 
 export const InfoPage: React.FC = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const { data } = useGetCharacterByIdQuery(Number(id));
 
   return (
     <Box
       sx={(theme) => ({
-        [theme.breakpoints.up("md")]: {
-          mb: 14.5,
-        },
-        [theme.breakpoints.down("md")]: {
-          mb: 7.5,
-        },
+        [theme.breakpoints.up("md")]: { mb: 14.5 },
+        [theme.breakpoints.down("md")]: { mb: 7.5 },
         p: 3,
       })}
     >
-      <StyledLink to="/">
-        <Button
-          startIcon={<ArrowBack sx={{ width: "24px", height: "24px" }} />}
-          sx={{
-            pt: 0.25,
-            pb: 0.15,
-            pl: 0.5,
-            pr: 0,
-            height: "24px",
-            fontWeight: 700,
-            fontSize: "18px",
-            lineHeight: "21px",
-            color: "black",
-          }}
-        >
-          Go Back
-        </Button>
-      </StyledLink>
+      <BackButton onBack={() => navigate("/")} />
       <Container
         sx={(theme) => ({
-          [theme.breakpoints.up("md")]: {
-            mt: 3.5,
-          },
-          [theme.breakpoints.down("md")]: {
-            mt: 9.5,
-          },
+          [theme.breakpoints.up("md")]: { mt: 3.5 },
+          [theme.breakpoints.down("md")]: { mt: 9.5 },
           textAlign: "center",
           px: 0,
         })}
       >
-        <Avatar
-          src={data?.image}
-          alt="item-photo"
-          sx={(theme) => ({
-            [theme.breakpoints.up("md")]: {
-              width: "300px",
-              height: "300px",
-            },
-            [theme.breakpoints.down("md")]: {
-              width: "150px",
-              height: "150px",
-            },
-            border: "5px solid #F2F2F7",
-            margin: "auto",
-          })}
-        />
-        <Typography
-          sx={(theme) => ({
-            [theme.breakpoints.up("md")]: {
-              mt: 2,
-              fontSize: "48px",
-              lineHeight: "56px",
-            },
-            [theme.breakpoints.down("md")]: {
-              mt: 4,
-              fontSize: "32px",
-              lineHeight: "38px",
-            },
-            color: "#081F32",
-          })}
-        >
-          {data?.name}
-        </Typography>
-        <Typography
-          sx={(theme) => ({
-            [theme.breakpoints.up("md")]: {
-              mt: 6,
-            },
-            [theme.breakpoints.down("md")]: {
-              mt: 4,
-              textAlign: "start",
-            },
-            color: "#8E8E93",
-            fontSize: "20px",
-            fontWeight: 500,
-            lineHeight: "24px",
-          })}
-        >
-          Informations
-        </Typography>
+        <InfoAvatar image={data?.image} />
+        <InfoName name={data?.name} />
+        <InfoTitle title={data ? "Informations" : ""} />
         <InfoTable item={data} />
       </Container>
     </Box>
